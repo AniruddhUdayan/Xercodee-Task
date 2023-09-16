@@ -3,12 +3,15 @@ import Link from "next/link";
 import React, {useEffect} from "react";
 import {useRouter} from "next/navigation";
 import axios from "axios";
+import {signIn,useSession} from 'next-auth/react'
 
 
 
 
 
 export default function LoginPage() {
+    const session = useSession();
+    console.log(session) 
     const router = useRouter();
     const [user, setUser] = React.useState({
         email: "",
@@ -67,6 +70,7 @@ export default function LoginPage() {
             onClick={onLogin}
             className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600">Login here</button>
             <Link href="/signup">Visit Signup page</Link>
+            <button onClick={()=>signIn('google')} className="p-2 mt-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600">Google Login</button>
         </div>
     )
 
