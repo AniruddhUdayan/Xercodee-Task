@@ -1,26 +1,29 @@
 "use client";
 import axios from "axios";
 import Link from "next/link";
-import React, {useState} from "react";
+import React, {useState,useEffect} from "react";
 import {useRouter} from "next/navigation";
+import { useSession, getSession, signOut } from "next-auth/react";
+import { IncomingMessage } from 'http'; 
+import { NextRequest } from "next/server";
+
 
 
 export default function ProfilePage() {
+    const { data: sessionAuth } = useSession();
     const router = useRouter()
     const [data, setData] = useState("nothing")
+    // const [token, setToken] = useState(null); 
+    // const token = localStorage.getItem('token');
     const logout = async () => {
-        try {
-            await axios.get('/api/users/logout')
-            router.push('/login')
-        } catch (error:any) {
-            console.log(error.message);
-        }
+        await signOut();
+        window.location.href = '/login';
     }
-
     const getUserDetails = async () => {
         const res = await axios.get('/api/users/me')
         console.log(res.data);
         setData(res.data.data.firstname)
+        // console.log(token) 
     }
 
     return (
@@ -45,3 +48,27 @@ export default function ProfilePage() {
             </div>
     )
 }
+
+export async function getServerSideProps({ req }: { req: NextRequest }) {
+    const session = await getSession({ req });
+  
+    if (!session) {
+      return {
+        redirect: {
+          destination: '/login',
+          permanent: false,
+        },
+      };
+    }
+  
+    return {
+      props: { session },
+    };
+  }
+ 
+  
+  
+  
+  
+  
+  
