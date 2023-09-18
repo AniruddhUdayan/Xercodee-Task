@@ -4,28 +4,31 @@ import Link from "next/link";
 import React, {useState,useEffect} from "react";
 import {useRouter} from "next/navigation";
 import { useSession, getSession, signOut } from "next-auth/react";
-import { IncomingMessage } from 'http'; 
 import { NextRequest } from "next/server";
-
+import { IncomingMessage } from 'http';
 
 
 export default function ProfilePage() {
-    const { data: sessionAuth } = useSession();
+    const session = useSession();
     const router = useRouter()
     const [data, setData] = useState("nothing")
-    // const [token, setToken] = useState(null); 
-    // const token = localStorage.getItem('token');
     const logout = async () => {
         await signOut();
         window.location.href = '/login';
     }
+    
     const getUserDetails = async () => {
         const res = await axios.get('/api/users/me')
         console.log(res.data);
         setData(res.data.data.firstname)
         // console.log(token) 
     }
-
+    useEffect(() => {
+        if (session && session.status === "unauthenticated") {
+          // Redirect the user to the profile page when authenticated
+          router.push("/login");
+        }
+      }, [session, router]);
     return (
         <div className="flex flex-col items-center justify-center min-h-screen py-2">
             <h1>Profile</h1>
@@ -49,26 +52,22 @@ export default function ProfilePage() {
     )
 }
 
-export async function getServerSideProps({ req }: { req: NextRequest }) {
-    const session = await getSession({ req });
+// export async function getServerSideProps({ req }: { req: NextRequest }) {
+//     const session = await getSession({ req });
   
-    if (!session) {
-      return {
-        redirect: {
-          destination: '/login',
-          permanent: false,
-        },
-      };
-    }
+//     if (!session) {
+//       return {
+//         redirect: {
+//           destination: '/login',
+//           permanent: false,
+//         },
+//       };
+//     }
   
-    return {
-      props: { session },
-    };
-  }
- 
-  
-  
-  
+//     return {
+//       props: { session },
+//     };
+//   }
   
   
   

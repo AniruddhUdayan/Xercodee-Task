@@ -3,14 +3,15 @@ import Link from "next/link";
 import React, {useEffect,useState} from "react";
 import {useRouter} from "next/navigation";
 import axios from "axios";
-import {signIn,useSession} from 'next-auth/react'
-
+import {signIn,useSession , getSession} from 'next-auth/react'
+import { NextRequest } from "next/server";
 
 
 
 
 export default function LoginPage() {
-    const { data: session } = useSession();
+    const session = useSession();
+    console.log(session.status) 
     const [token, setToken] = useState(null); 
     
     const router = useRouter();
@@ -21,28 +22,23 @@ export default function LoginPage() {
     })
     const [buttonDisabled, setButtonDisabled] = React.useState(false);
     const [loading, setLoading] = React.useState(false);
-
-    // useEffect(() => {
-    //     // Check if the user is authenticated when the component mounts
-       
-    //     if (session || token) {
-    //       // User is authenticated, redirect to profile page
-    //       router.push('/profile');
-    //     }
-    //   }, [session,router,token]);
     const signInHandlerGoogle = async () => {
             signIn('google');
-            router.push('/profile')
     }
     const signInHandlerGithub = async () => {
             signIn('github');
-            router.push('/profile')
     }
+    useEffect(() => {
+        if (session && session.status === "authenticated") {
+          // Redirect the user to the profile page when authenticated
+          router.push("/profile");
+        }
+      }, [session, router]);
     const onLogin = async () => {
         try {
             setLoading(true);
             // const response = await axios.post("/api/users/login", user);
-            // const token = response.data.token
+            // const token = response.data.tokenA
             // localStorage.setItem('token', token);
             // setToken(token);
             //     router.push('/profile');
@@ -100,9 +96,10 @@ export default function LoginPage() {
             onClick={onLogin}
             className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600">Login here</button>
             <Link href="/signup">Visit Signup page</Link>
-            <button onClick={signInHandlerGoogle} className="p-2 mt-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600">Google Login</button>
-            <button onClick={signInHandlerGithub} className="p-2 mt-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600">Github Login</button>
+            <button onClick={()=>signIn("google")} className="p-2 mt-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600">Google Login</button>
+            <button  onClick={()=>signIn("github")} className="p-2 mt-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600">Github Login</button>
         </div>
     )
 
 }
+
