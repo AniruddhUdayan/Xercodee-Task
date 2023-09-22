@@ -12,6 +12,7 @@ const nunito = Nunito({ subsets: ["latin"] });
 
 const Dashboard = () => {
   const session = useSession();
+  console.log(session) 
   const router = useRouter();
   const [awsSelected, setAwsSelected] = useState(false);
   const [gcpSelected, setGcpSelected] = useState(false);
@@ -152,7 +153,7 @@ const Dashboard = () => {
               <div
                 className={`${nunito.className} flex flex-col justify-center w-auto h-[76px] flex-shrink-0 text-[#242331] font-Nunito md:text-[40px] xl:text-[75px] font-extrabold leading-125`}
               >
-                Hi Arya!
+                Hi {session.data?.user?.email}
               </div>
               <div className="flex flex-row">
                 <div
