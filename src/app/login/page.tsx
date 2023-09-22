@@ -179,7 +179,7 @@ export default function LoginPage() {
               className={`${nunito.className}flex flex-row mt-[28px] w-[224px] h-[19px] text-sm font-normal `}
               style={{ color: "rgba(0, 0, 34, 0.50)" }}
             >
-              Dont't have an Acoount ?
+              Dont have an Acoount ?
               <Link
                 className="text-blue-600 font-nunito text-sm font-medium ml-[px]"
                 href="/signup"
