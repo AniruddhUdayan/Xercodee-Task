@@ -107,7 +107,7 @@ export default function SignupPage() {
   }, [user]);
   return (
     <div
-      className="flex justify-center items-center bg-opacity-0 bg-cover bg-center bg-no-repeat h-screen"
+      className="flex justify-center items-center bg-opacity-0 bg-cover bg-center bg-no-repeat h-auto"
       style={{ backgroundImage: `url('/images/Background.png')` }}
     >
       <div className="mx-[100px] my-[50px] flex flex-row rounded-tl-0 rounded-tr-[35px] rounded-br-[35px] rounded-bl-[35px] bg-white w-full max-w-[1114px] h-auto p-[31px]">

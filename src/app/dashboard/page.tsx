@@ -147,13 +147,13 @@ const Dashboard = () => {
         {" "}
         <Navbar />
         <div className="flex flex-col  p-[20px] w-auto h-auto flex-shrink-0 rounded-[35px] bg-white ml-[10px] relative right-5 gap-[24px]">
-          <div className="w-auto h-[171px] flex-shrink-0 rounded-[25px] border border-white  bg-gradient-to-b from-blue-50 to-blue-50 p-[24px]">
+          <div className="w-auto h-auto flex-shrink-0 rounded-[25px] border border-white  bg-gradient-to-b from-blue-50 to-blue-50 p-[24px]">
             <div className="flex flex-row justify-between">
               {" "}
               <div
-                className={`${nunito.className} flex flex-col justify-center w-auto h-[76px] flex-shrink-0 text-[#242331] font-Nunito md:text-[40px] xl:text-[75px] font-extrabold leading-125`}
+                className={`${nunito.className} flex flex-col justify-center w-auto max-w-[300px] h-auto flex-shrink-0 text-[#242331] font-Nunito md:text-[40px] lg:text-[50px] xl:text-[75px] font-extrabold leading-125`}
               >
-                Hi {session.data?.user?.email}
+                 Hi {session.data?.user?.email && session.data.user.email.split('@')[0]}
               </div>
               <div className="flex flex-row">
                 <div
