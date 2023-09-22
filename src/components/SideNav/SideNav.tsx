@@ -64,7 +64,7 @@ const SideNav = () => {
   // Initialize activeItem with the index of "Xero Codee" item
   const [activeItem, setActiveItem] = useState(SideNavData.findIndex(item => item.title === 'Xero Codee'));
 
-  const handleItemClick = (index) => {
+  const handleItemClick = (index:any) => {
     if (activeItem !== index) {
       setActiveItem(index);
     }
