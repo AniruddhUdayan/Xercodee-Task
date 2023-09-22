@@ -2,7 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './CircularProgressBar.css'; // Import the CSS file for animations
 
-const CircularProgressBar = ({ progress }) => {
+interface CircularProgressBarProps {
+  progress: number;
+}
+
+const CircularProgressBar: React.FC<CircularProgressBarProps> = ({ progress }) => {
   // Calculate the remaining part of the dash (gap) explicitly
   const gap = 100 - progress;
 
