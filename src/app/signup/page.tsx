@@ -8,27 +8,26 @@ import { Nunito } from "next/font/google";
 import { useSession, signIn } from "next-auth/react";
 
 const nunito = Nunito({ subsets: ["latin"] });
+interface User {
+  firstname: string;
+  lastname: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
+}
 
 export default function SignupPage() {
   const session = useSession();
   const router = useRouter();
-  interface User {
-    firstname: string;
-    lastname: string;
-    email: string;
-    password: string;
-    confirmPassword: string;
-  }
-  
-  // Assuming 'user' is of type User
   const [user, setUser] = React.useState<User>({
     firstname: "",
     lastname: "",
     email: "",
     password: "",
     confirmPassword: "",
-  });
-  const [validationErrors, setValidationErrors] = useState({});
+  } as User);
+  const [validationErrors, setValidationErrors] = useState<Partial<User>>({});
+
   const [buttonDisabled, setButtonDisabled] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
 
