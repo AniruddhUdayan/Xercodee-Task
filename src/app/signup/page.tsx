@@ -110,7 +110,7 @@ export default function SignupPage() {
       className="flex justify-center items-center bg-opacity-0 bg-cover bg-center bg-no-repeat h-screen"
       style={{ backgroundImage: `url('/images/Background.png')` }}
     >
-      <div className="mx-[100px] my-[50px] flex flex-row rounded-tl-0 rounded-tr-[35px] rounded-br-[35px] rounded-bl-[35px] bg-white w-full max-w-[1114px] min-h-[800px] p-[31px]">
+      <div className="mx-[100px] my-[50px] flex flex-row rounded-tl-0 rounded-tr-[35px] rounded-br-[35px] rounded-bl-[35px] bg-white w-full max-w-[1114px] h-auto p-[31px]">
         <div className="flex flex-col items-center w-full  mr-[32px]">
           <div className="w-[160px] h-[47px]">
             <Image
@@ -120,7 +120,7 @@ export default function SignupPage() {
               height={47}
             />
           </div>
-          <div className="w-full h-full flex flex-col mt-[27px] items-center">
+          <div className="w-full h-full flex flex-col  items-center">
             <div
               className={`${nunito.className} text-black text-center  text-[32px] font-bold  capitalize`}
             >
@@ -289,8 +289,8 @@ export default function SignupPage() {
           </div>
         </div>
         <div className="h-auto border-l border-gray-300 mt-[86px]"></div>
-        <div className="w-full flex flex-col">
-          <div className="mt-[224px]">
+        <div className="w-full flex flex-col justify-end">
+          <div className="">
             <Image
               src="/images/bro.png"
               alt="Your Logo"
@@ -298,7 +298,7 @@ export default function SignupPage() {
               height={326}
             />
           </div>
-          <div className="mt-[105px] relative left-[31px] w-full">
+          <div className="relative left-[31px] top-8 w-full">
             <Image
               src="/images/wave.png"
               alt="Your Logo"

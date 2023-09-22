@@ -190,8 +190,8 @@ export default function LoginPage() {
           </div>
         </div>
         <div className="h-auto border-l border-gray-300 mt-[86px]"></div>
-        <div className="w-full flex flex-col h-auto">
-          <div className="mt-[224px]">
+        <div className="w-full flex flex-col h-auto justify-end">
+          <div className="">
             <Image
               src="/images/bro.png"
               alt="Your Logo"
@@ -199,7 +199,7 @@ export default function LoginPage() {
               height={326}
             />
           </div>
-          <div className="mt-[105px] relative left-[31px] w-full">
+          <div className=" relative left-[31px] top-8 w-full">
             <Image
               src="/images/wave.png"
               alt="Your Logo"
