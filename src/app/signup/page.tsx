@@ -110,7 +110,7 @@ export default function SignupPage() {
       className="flex justify-center items-center bg-opacity-0 bg-cover bg-center bg-no-repeat h-screen"
       style={{ backgroundImage: `url('/images/Background.png')` }}
     >
-      <div className="mx-[100px] flex flex-row rounded-tl-0 rounded-tr-[35px] rounded-br-[35px] rounded-bl-[35px] bg-white w-full max-w-[1114px] min-h-[800px] p-[31px] pb-0">
+      <div className="mx-[100px] my-[50px] flex flex-row rounded-tl-0 rounded-tr-[35px] rounded-br-[35px] rounded-bl-[35px] bg-white w-full max-w-[1114px] min-h-[800px] p-[31px]">
         <div className="flex flex-col items-center w-full  mr-[32px]">
           <div className="w-[160px] h-[47px]">
             <Image
@@ -288,7 +288,7 @@ export default function SignupPage() {
             </div>
           </div>
         </div>
-        <div className="h-[603px] border-l border-gray-300 mt-[86px]"></div>
+        <div className="h-auto border-l border-gray-300 mt-[86px]"></div>
         <div className="w-full flex flex-col">
           <div className="mt-[224px]">
             <Image

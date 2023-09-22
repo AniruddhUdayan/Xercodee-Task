@@ -55,7 +55,7 @@ export default function LoginPage() {
       className="flex justify-center items-center bg-opacity-0 bg-cover bg-center bg-no-repeat h-screen"
       style={{ backgroundImage: `url('/images/Background.png')` }}
     >
-      <div className="flex mx-[100px] my-[50px] flex-row rounded-tl-0 rounded-tr-[35px] rounded-br-[35px] rounded-bl-[35px] bg-white w-full max-w-[1114px]  h-auto p-[31px] pb-0">
+      <div className="flex mx-[100px] my-[50px] flex-row rounded-tl-0 rounded-tr-[35px] rounded-br-[35px] rounded-bl-[35px] bg-white w-full max-w-[1114px] p-[31px]">
         <div className="flex flex-col items-center w-full h-auto mr-[32px]">
           <div className="w-[160px] h-[47px]">
             <Image
@@ -189,7 +189,7 @@ export default function LoginPage() {
             </div>
           </div>
         </div>
-        <div className="h-[603px] border-l border-gray-300 mt-[86px]"></div>
+        <div className="h-auto border-l border-gray-300 mt-[86px]"></div>
         <div className="w-full flex flex-col h-auto">
           <div className="mt-[224px]">
             <Image
