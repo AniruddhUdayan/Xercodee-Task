@@ -14,7 +14,7 @@ export default function ProfilePage() {
   const [showInputDiv, setShowInputDiv] = useState(false);
   const [selectedDivText, setSelectedDivText] = useState("");
 
-  const handleDivClick = (text) => {
+  const handleDivClick = (text:any) => {
     setSelectedDivText(text); 
     setShowInputDiv(true); 
   };

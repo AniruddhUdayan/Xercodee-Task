@@ -12,11 +12,21 @@ const nunito = Nunito({ subsets: ["latin"] });
 export default function SignupPage() {
   const session = useSession();
   const router = useRouter();
-  const [user, setUser] = React.useState({
-    email: "",
-    password: "",
+  interface User {
+    firstname: string;
+    lastname: string;
+    email: string;
+    password: string;
+    confirmPassword: string;
+  }
+  
+  // Assuming 'user' is of type User
+  const [user, setUser] = React.useState<User>({
     firstname: "",
     lastname: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
   });
   const [validationErrors, setValidationErrors] = useState({});
   const [buttonDisabled, setButtonDisabled] = React.useState(false);
@@ -33,7 +43,7 @@ export default function SignupPage() {
   };
 
   const validateForm = () => {
-    const errors = {};
+    const errors: Partial<User> = {};
 
     if (!validateEmail(user.email)) {
       errors.email = "Invalid email address";
@@ -71,7 +81,7 @@ export default function SignupPage() {
       const response = await axios.post("/api/users/signup", user);
       console.log("Signup success", response.data);
       router.push("/login");
-    } catch (error) {
+    } catch (error:any) {
       console.log("Signup failed", error.message);
     } finally {
       setLoading(false);
